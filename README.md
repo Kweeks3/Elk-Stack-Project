@@ -47,3 +47,5 @@ All of the following VMs are accessible through SSH of the Jump Box. The table b
 | ElkVM                | No            | 10.0.0.4       |
 
 # Configuring the Elk Stack
+
+Similar to the deployment of the docker container, Ansible is used to configure the Elk Stack as well. From the installation to the modules used within the server, each of them required a different playbook to properly configure the Elk Stack. 
