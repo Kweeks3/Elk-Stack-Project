@@ -21,3 +21,4 @@ specific parts of the stack server.
 Previously, a Cloud Network system was set up within the Azure Lab environment along with a newly created Network Security and Monitoring system. 
 The purpose of the Elk Server is to monitor the Load-Balancer which gives network access to the user while heavily restricting access to those outside of it. 
 Everything is done from a docker container within a Provisioned Jump Box which allows the user-only to have access to the network while the Load-Balancer keeps outside individuals from SSHing to the VMs. 
+
