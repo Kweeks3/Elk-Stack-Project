@@ -23,3 +23,13 @@ The purpose of the Elk Server is to monitor the Load-Balancer which gives networ
 Everything is done from a docker container within a Provisioned Jump Box which allows the user-only to have access to the network while the Load-Balancer keeps outside individuals from SSHing to the VMs while accessing the DVWA (Damn Vulnerable Web Application) from the internet. 
 
 With the Elk Server installed, the modules **Filebeat** and **Metricbeat** were then installed to monitor system logs (Filebeat) and CPU performance (MetricBeat).
+
+A Total of 3 VMs with a Jump Box to access them was used in this lab environment. The follwing were..
+
+| Name                 | Function    | IP Address |
+| -------------------- | ----------- | ---------- |
+| JumpBox-Provisioner1 | Gateway     | 10.0.0.4   |
+| Web1                 | DVWA Server | 10.0.0.5   |
+| Web2                 | DVWA Server | 10.0.0.6   |
+| ElkVM                | Elk Stack   | 10.1.0.4   |
+
