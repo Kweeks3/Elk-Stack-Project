@@ -24,7 +24,7 @@ Everything is done from a docker container within a Provisioned Jump Box which a
 
 With the Elk Server installed, the modules **Filebeat** and **Metricbeat** were then installed to monitor system logs (Filebeat) and CPU performance (MetricBeat).
 
-A Total of 3 VMs with a Jump Box to access them was used in this lab environment. The follwing were..
+A Total of 3 VMs with a Jump Box to access them was used in this lab environment. The following and their functions are..
 
 | Name                 | Function    | IP Address |
 | -------------------- | ----------- | ---------- |
