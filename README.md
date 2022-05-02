@@ -57,3 +57,10 @@ The following 3 playbooks below were used in this process..
 * [Install Filebeat Playbook](Ansible/filebeat-playbook.yml) Download Filebeat and copy the configuration. Set up and enable the Filebeat module then start the service.
 
 * [Install Metricbeat Playbook](Ansible/metricbeat-playbook.yml) Download Metricbeat and copy the configuration. Set up and enable the Metricbeat module then start the service.
+
+# Affected Machines and Modules
+
+Web1 and Web2 machines within the Cloud Network are the targetted machines being monitored by the Elk Stack Server. Both Filebeat and Metricbeat are installed to observe and collect information from the VMs. As mentioned before, **Filebeat** monitors system logs and failure attempts of processes within the network. **Metricbeat** collects data from the VMs CPU processes such as usage and memory. 
+
+# Ansible Playbook
+
