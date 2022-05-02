@@ -93,4 +93,66 @@ The following 3 playbooks below were used in this process..
       name: docker
       enabled: yes
       
+     ---
+- name: installing and launching filebeat
+  hosts: webservers
+  become: yes
+  remote_user: azureuser
+  tasks:
+
+  - name: download filebeat deb
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb
+
+  - name: install filebeat deb
+    command: sudo dpkg -i filebeat-7.6.1-amd64.deb
+
+  - name: drop in filebeat.yml
+    copy:
+      src: /etc/ansible/files/filebeat-config.yml
+      dest: /etc/filebeat/filebeat.yml
+
+  - name: enable and configure system module
+    command: sudo filebeat modules enable system
+
+  - name: setup filebeat
+    command: sudo filebeat setup
+
+  - name: start filebeat service
+    command: sudo service filebeat start
+
+  - name: enable service filebeat on boot
+    systemd:
+      name: filebeat
+      enabled: yes
       
+      ---
+- name: installing and launching metricbeat
+  hosts: webservers
+  become: yes
+  remote_user: azureuser
+  tasks:
+
+  - name: download metricbeat deb
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.1-amd64.deb
+
+  - name: install metricbeat deb
+    command: sudo dpkg -i metricbeat-7.6.1-amd64.deb
+
+  - name: drop in metricbeat.yml
+    copy:
+      src: /etc/ansible/files/metricbeat-config.yml
+      dest: /etc/metricbeat/metricbeat.yml
+
+  - name: enable and configure system module
+    command: sudo metricbeat modules enable docker
+
+  - name: setup metricbeat
+    command: sudo metricbeat setup
+
+  - name: start metricbeat service
+    command: sudo service metricbeat start
+
+  - name: enable service metricbeat on boot
+    systemd:
+      name: metricbeat
+      enabled: yes
