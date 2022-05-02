@@ -14,3 +14,4 @@ specific parts of the stack server.
 
 * [Elk Installation Playbook](install-elk.yml) installs the Elk server.
 * [Filebeat Playbook](filebeat-playbook.yml) installs Filebeat to the Elk VM.
+* [Metricbeat Playbook](metricbeat-playbook.yml) installs Metricbeat to the Elk VM.
