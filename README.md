@@ -67,9 +67,13 @@ Web1 and Web2 machines within the Cloud Network are the targetted machines being
 Before the Elk Stack's Playbooks can be deployed, Ansible must already be configured from the docker container. In order to do so, you will SSH into the Ansible container from the Jump Box and copy the 3 playbooks to insert within the hosts file of your Ansible container. Once in, you will create a new Elk webserver that looks similar to this within the hosts file..
 
 [webservers]
+
 10.0.0.5 ansible_python_interpreter=/usr/bin/python3
+
 10.0.0.6 ansible_python_interpreter=/usr/bin/python3
 
 [elk]
+
 10.1.0.4
 
+* Run playbook and check that the installation functioned properly. Can be found under http://(Elk Public IP):5601.
