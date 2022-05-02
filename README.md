@@ -12,7 +12,7 @@ Azure Lab Environment.
 These files were all used in order to complete the Azure deployment. Starting from the Elk installation to the Filebeat and Metricbeat playbooks used in order to run 
 specific parts of the stack server. 
 
-* [Elk Installation Playbook](~/Elk-Stack-Project/Ansible/install-elk.yml) installs the Elk server.
+* [Elk Installation Playbook](Elk-Stack-Project/Ansible/install-elk.yml) installs the Elk server.
 * [Filebeat Playbook](./Elk-Stack-Project/Ansible/filebeat-playbook.yml) installs Filebeat to the Elk VM.
 * [Metricbeat Playbook](./Elk-Stack-Project/Ansible/metricbeat-playbook.yml) installs Metricbeat to the Elk VM.
 
@@ -49,3 +49,48 @@ All of the following VMs are accessible through SSH of the Jump Box. The table b
 # Configuring the Elk Stack
 
 Similar to the deployment of the docker container, Ansible is used to configure the Elk Stack as well. From the installation to the modules used within the server, each of them required a different playbook to properly configure the Elk Stack. 
+
+The following 3 playbooks below were used in this process..
+
+---
+- name: Install ELK
+  hosts: elk
+  become: true
+  tasks:
+  - name: Allocate Memory
+    sysctl:
+      name: vm.max_map_count
+      value: '262144'
+      state: present
+      reload: yes
+  - name: Install docker.io
+    apt:
+      force_apt_get: yes
+      update_cache: yes
+      name: docker.io
+      state: present
+  - name: Install pip3
+    apt:
+      force_apt_get: yes
+      name: python3-pip
+      state: present
+  - name: Install Docker Python Module
+    pip:
+      name: docker
+      state: present
+  - name: Download and Launch docker ELK Container
+    docker_container:
+      name: elk
+      image: sebp/elk:761
+      state: started
+      restart_policy: always
+      published_ports:
+        - 5601:5601
+        - 9300:9200
+        - 5044:5044
+  - name: Enable Docker Service
+    systemd:
+      name: docker
+      enabled: yes
+      
+      
