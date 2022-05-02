@@ -52,4 +52,5 @@ Similar to the deployment of the docker container, Ansible is used to configure 
 
 The following 3 playbooks below were used in this process..
 
-
+* [Install Elk Playbook](Ansible/install-elk.yml)
+'apt' Install docker.io
