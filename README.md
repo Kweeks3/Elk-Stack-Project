@@ -13,8 +13,8 @@ These files were all used in order to complete the Azure deployment. Starting fr
 specific parts of the stack server. 
 
 * [Elk Installation Playbook](./Elk-Stack-Project/Ansible/install-elk.yml) installs the Elk server.
-* [Filebeat Playbook](filebeat-playbook.yml) installs Filebeat to the Elk VM.
-* [Metricbeat Playbook](metricbeat-playbook.yml) installs Metricbeat to the Elk VM.
+* [Filebeat Playbook](./Elk-Stack-Project/Ansible/filebeat-playbook.yml) installs Filebeat to the Elk VM.
+* [Metricbeat Playbook](./Elk-Stack-Project/Ansible/metricbeat-playbook.yml) installs Metricbeat to the Elk VM.
 
 # Network Description
 
