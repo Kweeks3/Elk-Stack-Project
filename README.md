@@ -13,4 +13,4 @@ These files were all used in order to complete the Azure deployment. Starting fr
 specific parts of the stack server. 
 
 * [Elk Installation Playbook](install-elk.yml) installs the Elk server.
-* [Filebeat Playbook]
+* [Filebeat Playbook](filebeat-playbook.yml) installs Filebeat to the Elk VM.
