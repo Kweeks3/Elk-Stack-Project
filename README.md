@@ -13,8 +13,8 @@ These files were all used in order to complete the Azure deployment. Starting fr
 specific parts of the stack server. 
 
 **[Elk Installation Playbook:**] installs the Elk server.
-**Filebeat Playbook:** installs Filebeat to the Elk VM.
-**Metricbeat Playbook:** installs Metricbeat to the Elk VM.
+**[Filebeat Playbook:**] installs Filebeat to the Elk VM.
+**[Metricbeat Playbook:**] installs Metricbeat to the Elk VM.
 
 # Network Description
 
