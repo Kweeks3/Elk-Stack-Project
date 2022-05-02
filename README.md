@@ -14,7 +14,7 @@ specific parts of the stack server.
 
 * [Elk Installation Playbook](Elk-Stack-Project/Ansible/install-elk.yml) installs the Elk server.
 * [Filebeat Playbook](./Elk-Stack-Project/Ansible/filebeat-playbook.yml) installs Filebeat to the Elk VM.
-* [Metricbeat Playbook](./Elk-Stack-Project/Ansible/metricbeat-playbook.yml) installs Metricbeat to the Elk VM.
+* [Metricbeat Playbook](Ansible/metricbeat-playbook.yml) installs Metricbeat to the Elk VM.
 
 # Network Description
 
