@@ -77,3 +77,16 @@ Before the Elk Stack's Playbooks can be deployed, Ansible must already be config
 10.1.0.4
 
 * Run playbook and check that the installation functioned properly. Can be found under http://(Elk Public IP):5601.
+
+# Clone Repository
+git clone https://github.com/Kweeks3/Elk-Stack-Project
+
+# Run Elk Installation
+ansible-playbook /etc/ansible/roles/install-elk.yml
+
+# Run Filebeat Playbook
+ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
+
+# Run Metricbeat Playbook
+ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml
+
