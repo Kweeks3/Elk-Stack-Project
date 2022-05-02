@@ -52,5 +52,8 @@ Similar to the deployment of the docker container, Ansible is used to configure 
 
 The following 3 playbooks below were used in this process..
 
-* [Install Elk Playbook](Ansible/install-elk.yml)
-'apt' Install docker.io
+* [Install Elk Playbook](Ansible/install-elk.yml) Use the 'apt' command to install docker.io and python3-pip. Afterwards, use 'pip' to install docker python module. The Elk Stack's docker container should be ready to install and launch at this point. 
+ 
+* [Install Filebeat Playbook](Ansible/filebeat-playbook.yml) Download Filebeat and copy the configuration. Set up and enable the Filebeat module then start the service.
+
+* [Install Metricbeat Playbook](Ansible/metricbeat-playbook.yml) Download Metricbeat and copy the configuration. Set up and enable the Metricbeat module then start the service.
