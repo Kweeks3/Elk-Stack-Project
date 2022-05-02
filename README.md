@@ -33,3 +33,17 @@ A Total of 3 VMs with a Jump Box to access them was used in this lab environment
 | Web2                 | DVWA Server | 10.0.0.6   |
 | ElkVM                | Elk Stack   | 10.1.0.4   |
 
+# Access Policies
+
+A Jump Box was used to be able to connect and accept connections from the internet while only allowing access to this machine from a personal home IP address. The other VMs within the network were protected and not accessible to the internet due to the Jump Box and it's access policies. 
+
+All of the following VMs are accessible through SSH of the Jump Box. The table below shows the access policies..
+
+| Name                 | Public Access | Approved IP    |
+| -------------------- | ------------- | -------------- |
+| JumpBox-Provisioner1 | Yes           | 98.193.XXX.XXX |
+| Web1                 | No            | 10.0.0.4       |
+| Web2                 | No            | 10.0.0.4       |
+| ElkVM                | No            | 10.0.0.4       |
+
+# Configuring the Elk Stack
