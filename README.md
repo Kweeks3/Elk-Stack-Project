@@ -12,8 +12,8 @@ Azure Lab Environment.
 These files were all used in order to complete the Azure deployment. Starting from the Elk installation to the Filebeat and Metricbeat playbooks used in order to run 
 specific parts of the stack server. 
 
-* [Elk Installation Playbook](Elk-Stack-Project/Ansible/install-elk.yml) installs the Elk server.
-* [Filebeat Playbook](./Elk-Stack-Project/Ansible/filebeat-playbook.yml) installs Filebeat to the Elk VM.
+* [Elk Installation Playbook](Ansible/install-elk.yml) installs the Elk server.
+* [Filebeat Playbook](Ansible/filebeat-playbook.yml) installs Filebeat to the Elk VM.
 * [Metricbeat Playbook](Ansible/metricbeat-playbook.yml) installs Metricbeat to the Elk VM.
 
 # Network Description
@@ -52,107 +52,4 @@ Similar to the deployment of the docker container, Ansible is used to configure 
 
 The following 3 playbooks below were used in this process..
 
----
-- name: Install ELK
-  hosts: elk
-  become: true
-  tasks:
-  - name: Allocate Memory
-    sysctl:
-      name: vm.max_map_count
-      value: '262144'
-      state: present
-      reload: yes
-  - name: Install docker.io
-    apt:
-      force_apt_get: yes
-      update_cache: yes
-      name: docker.io
-      state: present
-  - name: Install pip3
-    apt:
-      force_apt_get: yes
-      name: python3-pip
-      state: present
-  - name: Install Docker Python Module
-    pip:
-      name: docker
-      state: present
-  - name: Download and Launch docker ELK Container
-    docker_container:
-      name: elk
-      image: sebp/elk:761
-      state: started
-      restart_policy: always
-      published_ports:
-        - 5601:5601
-        - 9300:9200
-        - 5044:5044
-  - name: Enable Docker Service
-    systemd:
-      name: docker
-      enabled: yes
-      
-     ---
-- name: installing and launching filebeat
-  hosts: webservers
-  become: yes
-  remote_user: azureuser
-  tasks:
 
-  - name: download filebeat deb
-    command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb
-
-  - name: install filebeat deb
-    command: sudo dpkg -i filebeat-7.6.1-amd64.deb
-
-  - name: drop in filebeat.yml
-    copy:
-      src: /etc/ansible/files/filebeat-config.yml
-      dest: /etc/filebeat/filebeat.yml
-
-  - name: enable and configure system module
-    command: sudo filebeat modules enable system
-
-  - name: setup filebeat
-    command: sudo filebeat setup
-
-  - name: start filebeat service
-    command: sudo service filebeat start
-
-  - name: enable service filebeat on boot
-    systemd:
-      name: filebeat
-      enabled: yes
-      
-      ---
-- name: installing and launching metricbeat
-  hosts: webservers
-  become: yes
-  remote_user: azureuser
-  tasks:
-
-  - name: download metricbeat deb
-    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.1-amd64.deb
-
-  - name: install metricbeat deb
-    command: sudo dpkg -i metricbeat-7.6.1-amd64.deb
-
-  - name: drop in metricbeat.yml
-    copy:
-      src: /etc/ansible/files/metricbeat-config.yml
-      dest: /etc/metricbeat/metricbeat.yml
-
-  - name: enable and configure system module
-    command: sudo metricbeat modules enable docker
-
-  - name: setup metricbeat
-    command: sudo metricbeat setup
-
-  - name: start metricbeat service
-    command: sudo service metricbeat start
-
-  - name: enable service metricbeat on boot
-    systemd:
-      name: metricbeat
-      enabled: yes
