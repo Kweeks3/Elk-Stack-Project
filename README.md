@@ -12,4 +12,4 @@ Azure Lab Environment.
 These files were all used in order to complete the Azure deployment. Starting from the Elk installation to the Filebeat and Metricbeat playbooks used in order to run 
 specific parts of the stack server. 
 
-* [Elk Installation Playbook](./etc/ansible/install-elk.yml)
+* [Elk Installation Playbook](/etc/ansible/install-elk.yml)
